@@ -83,7 +83,7 @@ export default {
         "#D42F31",
         "#730D1C"
       ];
-      fetch("/361100_full.json")
+      fetch("./static/361100_full.json")
         .then(res => res.json())
         .then(data => {
           data.features.forEach(it => {
@@ -151,7 +151,7 @@ export default {
         "#D42F31",
         "#730D1C"
       ];
-      fetch("/city-pm2.5.json")
+      fetch("./static/city-pm2.5.json")
         .then(res => res.json())
         .then(data => {
           console.log(data);
