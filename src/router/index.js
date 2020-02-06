@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import Amap from "../views/Amap.vue";
+import Antv from "../views/Antv.vue";
 
 Vue.use(VueRouter);
 
@@ -9,6 +11,16 @@ const routes = [
     path: "/",
     name: "home",
     component: Home
+  },
+  {
+    path: "/amap",
+    name: "amap",
+    component: Amap
+  },
+  {
+    path: "/antv",
+    name: "antv",
+    component: Antv
   },
   {
     path: "/about",
