@@ -7,6 +7,7 @@
 <script>
 import { Scene, PolygonLayer, LineLayer, PointLayer, Popup } from "@antv/l7";
 import { GaodeMap } from "@antv/l7-maps";
+import srMap from "@/assets/361100_full.js";
 
 export default {
   name: "antv",
@@ -83,54 +84,55 @@ export default {
         "#D42F31",
         "#730D1C"
       ];
-      this.$axios
-        .get("./static/361100_full.json")
-        .then(res => res.data)
-        .then(data => {
-          data.features.forEach(it => {
-            it.properties.value = Math.floor(Math.random() * 100);
-          });
-          console.log(data);
-          const layer = new PolygonLayer()
-            .source(data)
-            .color("value", d => {
-              return d > 90
-                ? color[5]
-                : d > 80
-                ? color[4]
-                : d > 60
-                ? color[3]
-                : d > 40
-                ? color[2]
-                : d > 20
-                ? color[1]
-                : color[0];
-            })
-            .shape("fill")
-            // .active(true)
-            .style({
-              opacity: 1
-            });
-          scene.addLayer(layer);
-
-          const layer2 = new LineLayer({ zIndex: 2 })
-            .source(data)
-            .size(0.3)
-            .color("pink");
-          scene.addLayer(layer2);
-
-          layer.on("mousemove", e => {
-            const popup = new Popup({
-              offsets: [0, 0],
-              closeButton: false
-            })
-              .setLnglat(e.lngLat)
-              .setHTML(
-                `<span>${e.feature.properties.name}: ${e.feature.properties.value}</span>`
-              );
-            scene.addPopup(popup);
-          });
+      const data = srMap;
+      // this.$axios
+      //   .get("./static/361100_full.json")
+      //   .then(res => res.data)
+      //   .then(data => {
+      data.features.forEach(it => {
+        it.properties.value = Math.floor(Math.random() * 100);
+      });
+      console.log(data);
+      const layer = new PolygonLayer()
+        .source(data)
+        .color("value", d => {
+          return d > 90
+            ? color[5]
+            : d > 80
+            ? color[4]
+            : d > 60
+            ? color[3]
+            : d > 40
+            ? color[2]
+            : d > 20
+            ? color[1]
+            : color[0];
+        })
+        .shape("fill")
+        // .active(true)
+        .style({
+          opacity: 1
         });
+      scene.addLayer(layer);
+
+      const layer2 = new LineLayer({ zIndex: 2 })
+        .source(data)
+        .size(0.3)
+        .color("pink");
+      scene.addLayer(layer2);
+
+      layer.on("mousemove", e => {
+        const popup = new Popup({
+          offsets: [0, 0],
+          closeButton: false
+        })
+          .setLnglat(e.lngLat)
+          .setHTML(
+            `<span>${e.feature.properties.name}: ${e.feature.properties.value}</span>`
+          );
+        scene.addPopup(popup);
+      });
+      // });
     },
     demo03() {
       const scene = new Scene({
