@@ -83,8 +83,9 @@ export default {
         "#D42F31",
         "#730D1C"
       ];
-      fetch("./static/361100_full.json")
-        .then(res => res.json())
+      this.$axios
+        .get("./static/361100_full.json")
+        .then(res => res.data)
         .then(data => {
           data.features.forEach(it => {
             it.properties.value = Math.floor(Math.random() * 100);
