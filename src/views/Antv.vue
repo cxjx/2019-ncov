@@ -68,7 +68,7 @@ export default {
       const scene = new Scene({
         id: "shangrao",
         map: new GaodeMap({
-          style: "blank", // dark, light, blank
+          style: "dark", // dark, light, blank
           center: [117.371185, 28.60442],
           pitch: 0,
           zoom: 7.5,

@@ -1,5 +1,6 @@
 import Vue from "vue";
 import axios from "axios";
+import VConsole from "vconsole";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
@@ -17,6 +18,7 @@ Object.defineProperties(Vue.prototype, {
   }
 });
 
+Vue.use(new VConsole());
 new Vue({
   router,
   store,
