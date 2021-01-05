@@ -11,7 +11,7 @@
   "dependencies": {
     "@antv/l7": "^2.0.15",
     "@antv/l7-maps": "^2.0.15",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "core-js": "^3.4.4",
     "vconsole": "^3.3.4",
     "vue": "^2.6.10",
